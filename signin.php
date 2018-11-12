@@ -17,7 +17,7 @@ $con=mysqli_connect("localhost","root","") or die("can't connect");
     	{
     		session_start();
     		$_SESSION["username"]=$username;
-    		echo "<script>window.location.href='blogger.php'</script>";
+    		echo "<script>alert('success');window.location.href='blogger.php';</script>";
     	}
     	else
     	{

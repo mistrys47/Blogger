@@ -1,4 +1,6 @@
 <?php
+session_start();
+//echo isset($_SESSION["username"]);
 if(!isset($_SESSION["username"]))
 {
   echo "<script>window.location.href='login.html';</script>";
@@ -24,7 +26,7 @@ if(!isset($_SESSION["username"]))
 }
 
 .left {
-  width: 20%;
+  width: 17%;
   margin-top: 9px;
   border-radius: 10px;
 }
@@ -40,7 +42,7 @@ if(!isset($_SESSION["username"]))
 }
 
 .right {
-  width: 80%;
+  width: 83%;
 }
 .row:after {
     content: "";
@@ -62,16 +64,18 @@ if(!isset($_SESSION["username"]))
 }
 .row .left .btn:hover {
     opacity: 1;
+    color: white;
 }
 button:hover{
-  color:#0E6251;
-  }
-	</style>
+	color: #0E6251;
+}
+</style>
 </head>
-<body>
+<body style="background-color: #BFC9CA;">
   <div class="row">
-	<div  class="column1 left1"style="background-color: #BFC9CA;"><center style="font-size: 50px;">Blogger</center></div>
-  <div class="column1 right1" style="background-color: #BFC9CA;padding: 20px;"><button style="padding:10px;border:none;background-color: transparent;font-size: 20px;" onclick="window.location.href='logout.php'">Logout</button></div>
+	<div  class="column1 left1"style="background-color: #BFC9CA;"><center style="font-size: 50px;margin-left: 350px;">Blogger</center></div>
+  <div class="column1 right1" style="background-color: #BFC9CA;padding: 20px;">
+    <button style="padding:10px;border:none;background-color: transparent;font-size: 20px;" onclick="window.location.href='logout.php'">Logout</button></div>
 <div class="row">
   <div class="column left" style="background-color:#aaa;">
   	
@@ -82,7 +86,7 @@ button:hover{
   </center>
  
   </div>
-  <div class="column right" style="background-color:white;">
+  <div class="column right" style="background-color:#BFC9CA;">
   	<iframe id="main" style="width:100%;height:690px;border-radius: 10px;"src="profile.php"></iframe>
   </div>
 </div>
