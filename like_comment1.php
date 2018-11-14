@@ -1,5 +1,5 @@
 <html>
-<body background="home_back.jpg" style="background-size: cover;opacity: 0.7;">
+<body  style="background-size: cover;opacity: 0.7;">
 	
 </body>
 </html>
@@ -22,7 +22,7 @@ while($r=mysqli_fetch_row($i))
 		$x1=$r1[0]+1;
 		$q1='update blog1 set likes='.$x1.' where blog_id="'.$r[0].'"';
 		mysqli_query($con,$q1);
-		echo "<script>window.location.href='home.php';</script>";
+		echo "<script>window.location.href='home1.php';</script>";
 	}
 	
 }
@@ -39,14 +39,14 @@ while($r=mysqli_fetch_row($i))
 		$email=$_POST["email".$r[0]];
 		$comment=$_POST["comment".$r[0]];
 		if($user=="" || $email=="" || $comment==""){
-				echo "<script>alert('Kindly fill all required');window.location.href='home.php';</script>";
+				echo "<script>alert('Kindly fill all required');window.location.href='home1.php';</script>";
 		}
 		else{
 		$blogid=$r[0];
 		$q1="insert into comments values ($blogid,'$user','$email','$comment')";
 		//echo $q1;
 		mysqli_query($con,$q1);
-		echo "<script>window.location.href='home.php';</script>";}
+		echo "<script>window.location.href='home1.php';</script>";}
 	}
 }
 ?>

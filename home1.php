@@ -47,7 +47,7 @@
 }
 	</style>
 </head>
-<body background="home_back.jpg" style="background-size: cover;opacity: 0.7;">
+<body  style="background-size: cover;opacity:0.8;background-color: #234043;">
 	
 </body>
 </html>
@@ -58,12 +58,12 @@ $con=mysqli_connect("localhost","root","") or die("can't connect");
 		mysqli_select_db($con,"blog");
 	$q="select * from blog1 order by blog_id desc";
 	$i=mysqli_query($con,$q);
-	echo '<form method="post" action="like_comment.php">';
+	echo '<form method="post" action="like_comment1.php" style="margin-top:30px;">';
 	while($r=mysqli_fetch_row($i))
 	{
 		echo '<center><div style="width:40%;">';
 		echo '<div class="title" >'.$r[2].'</div>';
-		echo '<div class="main">'.$r[3].'<div style="padding-left:85%;">-'.$r[1].'</div>';
+		echo '<div class="main">'.$r[3].'<div style="padding-left:80%;">-'.$r[1].'</div>';
 		echo $r[4].'<button type="submit" name="'.$r[0].'a" style="width:10%;border:none;background-color:#e6e6e6;outline:none;"><img src="like.png" style="width:100%;height:100%;"></button>';
 		echo '<button type="button" onclick="a('.$r[0].')" name="'.$r[0].'b"style="width:10%;border:none;background-color:#e6e6e6;outline:none;"><img src="comment.png" style="width:100%;height:100%;"></button>';
 		echo '<div id="'.$r[0].'" style="display:none;margin-top:10px;"><div><input type="email" name="email'.$r[0].'" placeholder="Email id"></div>

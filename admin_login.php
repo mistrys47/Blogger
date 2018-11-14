@@ -13,7 +13,6 @@ body {
 }
 .container {
   position: relative;
-  border-radius: 5px;
   background-color: #2196f34d;
   padding: 20px 0 30px 0;
   border-radius: 15px;
@@ -21,7 +20,7 @@ body {
 } 
 .container:hover{
   opacity: 1;
-  
+  background-color: #9c27b04d;
 }
 input {
   width: 290px;
@@ -102,22 +101,22 @@ a:hover {
 a:active {
     text-decoration: underline;
 }
-.ert:hover{
+input:hover{
   background-color: white;
 }
 </style>
 </head>
 <body background="job2.jpg" style="background-size: cover;">
-   <xy style="text-align: right;margin-left: 1300px;"><input type="button" name="" value="Admin" style="width: 100px;background-color: #397bbe96;"onclick="location.href='admin_login.php';" class="ert"></xy>
+  <xy style="text-align: right;margin-left: 1300px;"><input type="button" name="" value="Blogger" style="width: 100px;background-color: #397bbe96;"onclick="location.href='login.html';"></xy>
 <center>
-  <div style="margin-top: 100px;"><h1>Login</h1></div>
+  <div style="margin-top: 100px;"><h1>Admin Login</h1></div>
 <div  class="container" style="width: 25%;" >
-  <form method="post" action="signin.php">
+  <form method="post" action="admin_login.php">
     <div class="row">
       <div class="col">
         <input type="text" name="username" placeholder="Username" required>
         <input type="password" name="password" placeholder="Password" required>
-        <input type="submit" value="Login" class="">
+        <input type="submit" value="Login" name="sub">
       </div>
       
     </div>
@@ -127,3 +126,22 @@ a:active {
 </center>
 </body>
 </html>
+<?php
+if(isset($_POST["sub"])){
+$username=$_POST["username"];
+$password=$_POST["password"];
+$con=mysqli_connect("localhost","root","") or die("can't connect");
+  if(!mysqli_select_db($con,"blog"))
+    mysqli_query($con,"CREATE DATABASE blog");
+    mysqli_select_db($con,"blog");
+    $q="select * from admin";
+    $i=mysqli_query($con,$q);
+    $r=mysqli_fetch_row($i);
+    if($r[0]==$username && $r[1]==$password)
+    {
+      session_start();
+      $_SESSION["username"]=$username;
+      echo '<script>window.location.href="admin_home.php";</script>';
+    }
+  }
+?>
