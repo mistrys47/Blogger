@@ -63,9 +63,10 @@ $con=mysqli_connect("localhost","root","") or die("can't connect");
 	{
 		echo '<center><div style="width:40%;">';
 		echo '<div class="title" >'.$r[2].'</div>';
-		echo '<div class="main">'.$r[3].'<div style="padding-left:80%;">-'.$r[1].'</div>';
+		echo '<div class="main">'.$r[3].'<div style="padding-left:80%;color:blue;"><b>-'.$r[1].'</b></div>';
 		echo $r[4].'<button type="submit" name="'.$r[0].'a" style="width:10%;border:none;background-color:#e6e6e6;outline:none;"><img src="like.png" style="width:100%;height:100%;"></button>';
 		echo '<button type="button" onclick="a('.$r[0].')" name="'.$r[0].'b"style="width:10%;border:none;background-color:#e6e6e6;outline:none;"><img src="comment.png" style="width:100%;height:100%;"></button>';
+		echo '<button type="submit" name="'.$r[0].'d" style="background-color:#e6e6e6;outline:none;border:none;width:10%;"><img src="delete.png" style="width:100%;height:100%;"></button>';
 		echo '<div id="'.$r[0].'" style="display:none;margin-top:10px;"><div><input type="email" name="email'.$r[0].'" placeholder="Email id"></div>
 																		<div><input type="text" name="username'.$r[0].'" placeholder="Username"></div>
 																		<div><input type="text" name="comment'.$r[0].'" placeholder="Comment"></div>

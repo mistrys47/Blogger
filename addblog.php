@@ -45,7 +45,7 @@ $con=mysqli_connect("localhost","root","") or die("can't connect");
 }
 			</style>
 		</head>
-		<body><form method="post" action="addblog1.php"><center>
+		<body background="random.jpg"style="background-size: cover;"><form method="post" action="addblog1.php"><center>
 			<div style="margin-top: 20px;"><h1>Add Blog</h1></div>
 			<div ><input type="text" name="title" class="form__input" placeholder="Title"></div>
 			<div><textarea name="message"  placeholder="Enter Description here...!!!"  rows="10" style="width: 30%;padding: 20px;border-radius: 17px; font-family: 'Roboto'; outline-color:white; background-color: white;color: black;outline: none;margin-top: 10px;"></textarea></div>
@@ -54,10 +54,14 @@ $con=mysqli_connect("localhost","root","") or die("can't connect");
 		</body>
 		</html><?php
 	}
-	else
+	else if($row[0]==0)
 	{
 		echo "<script>alert('Wait untill admin verify your account!!!');window.location.href='profile.php';</script>";
-	}}
+	}
+else
+{
+	echo "<script>alert('your request to become a blogger has been rejected');window.location.href='profile.php';</script>";
+}}
 	else
 	{
 		echo "";

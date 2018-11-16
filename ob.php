@@ -14,7 +14,7 @@
 			background-color: #e2e2e2;
 			min-height: 50px;
 			text-align: left;
-			padding-left:45px;
+			padding-left:10px;
 		}
 		.btn{
   width: 100%;
@@ -61,19 +61,30 @@ $con=mysqli_connect("localhost","root","") or die("can't connect");
 			$i=mysqli_query($con,$q);
 			if(mysqli_num_rows($i))
 			{
+				echo '<form action="ob1.php" method="post">';
 				while($r=mysqli_fetch_row($i))
 				{
-					echo '<center><div style="width:40%;">';
+					echo '<center><div style="width:60%;">';
 		echo '<div class="title" >'.$r[2].'</div>';
-		echo '<div class="main">'.$r[3].'<div style="padding-left:80%;">-'.$r[1].'</div>';
-		echo $r[4].'<button type="submit" name="'.$r[0].'a" style="width:10%;border:none;background-color:#e6e6e6;outline:none;"><img src="like.png" style="height:100%;width:100%;"></button>';
+		echo '<div class="main">'.$r[3].'<div style="padding-left:80%;color:blue;"><b>-'.$r[1].'</b></div>';
+		echo $r[4].'<button type="button" name="'.$r[0].'a" style="width:10%;border:none;background-color:#e6e6e6;outline:none;"><img src="like.png" style="height:100%;width:100%;"></button>';
 		echo '<button type="button" name="'.$r[0].'b"style="width:10%;border:none;background-color:#e6e6e6;outline:none;"><img src="comment.png" style="width:100%;height:100%;"></button>';
-		echo '<div id="'.$r[0].'" style="display:none;margin-top:10px;"><div>Email-id  :<input type="email" name="email'.$r[0].'"></div>
-																		<div>Username  :<input type="text" name="username'.$r[0].'"></div>
-																		<div>Comment   :<input type="text" name="comment'.$r[0].'"></div>
-																		<div><button type="submit" name="'.$r[0].'c" class="btn">Submit</button>
-		</div>';
-		echo '</div></center>';
+		echo '<button type="submit" name="'.$r[0].'d" style="background-color:#e6e6e6;outline:none;border:none;width:10%;"><img src="delete.png" style="width:100%;height:100%;"></button>';
+		echo '<button type="button" style="background-color:black;color:white;outline:none;border-radius:5px;margin-left:5px;" onclick="b('.$r[0].')">Comments</button>';
+		echo '<div id="'.$r[0].'ff" style="background-color:#e6e6e6;display:none;">';
+		$q1="select * from comments where blog_id=".$r[0];
+		$i1=mysqli_query($con,$q1);
+		if(mysqli_num_rows($i1)==0)
+		{
+			echo 'No comments..';
+		}else{
+		while($r1=mysqli_fetch_row($i1))
+		{
+			echo '<div><b style="color:blue;">'.$r1[1].'</b>:<x style="margin-left:20px;">'.$r1[3].'</x></div>';
+		}}
+		echo '</div>';
+		echo '</div></center></form>';
+
 				}
 			}
 			else
@@ -87,3 +98,14 @@ $con=mysqli_connect("localhost","root","") or die("can't connect");
 		}
 		echo '</div>';
 ?>
+<script type="text/javascript">
+	function a(x) {
+		document.getElementById(x).style.display='block';
+	}
+	function b(x) {
+		x+='ff';
+		//alert(x);
+		document.getElementById(x).style.display='block';
+		
+	}
+</script>

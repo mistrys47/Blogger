@@ -13,14 +13,13 @@ body {
 }
 .container {
   position: relative;
-  background-color: #2196f34d;
+  background-color: #79554842;
   padding: 20px 0 30px 0;
   border-radius: 15px;
   opacity: 1;
 } 
 .container:hover{
   opacity: 1;
-  background-color: #9c27b04d;
 }
 input {
   width: 290px;
@@ -106,7 +105,7 @@ input:hover{
 }
 </style>
 </head>
-<body background="job2.jpg" style="background-size: cover;">
+<body background="job10.jpg" style="background-size: cover;">
   <xy style="text-align: right;margin-left: 1300px;"><input type="button" name="" value="Blogger" style="width: 100px;background-color: #397bbe96;"onclick="location.href='login.html';"></xy>
 <center>
   <div style="margin-top: 100px;"><h1>Admin Login</h1></div>
@@ -121,7 +120,7 @@ input:hover{
       
     </div>
   </form>
-  <div style="margin-top: 18px;"><a href="signup.html" style="color:black;">Don't have account?</a></div>
+  <div style="margin-top: 18px;">Good Vibes Only</div>
 </div>
 </center>
 </body>
