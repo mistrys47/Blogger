@@ -21,11 +21,12 @@ $con=mysqli_connect("localhost","root","") or die("can't connect");
 		$row=mysqli_fetch_row($i);
 		/*echo $row[0].$row[1];
 		echo "<img src='data:image/png;base64,".base64_encode($row[6])."' width='240' height='270'></img>";*/
-		echo '<body style="margin-top:100px;background-color:#E5E7E9     "><center><div class="card" style="width:400px">
+		echo '<body background="random.jpg"style="margin-top:100px;background-size:cover;    "><center><div class="card" style="width:400px">
     <img class="card-img-top" src="data:image/png;base64,'.base64_encode($row[5]).'" alt="Card image" style="height:400px;">
     <div class="card-body" style="">
       <h4 class="card-title">'.$row[0].'</h4>
-      <p class="card-text">Some example text some example text. John Doe is an architect and engineer</p>
+      <h6>'.$row[1].'</h6>
+      <h6>'.$row[2].'</h6>
     </div>
   </div></center></body>';
 ?>

@@ -8,7 +8,8 @@ $con=mysqli_connect("localhost","root","") or die("can't connect");
 	$password=hash('sha512',$password);
 	$q="select count(*) from userdetail where username='$username' AND password='$password'";
 	$i=mysqli_query($con,$q);
-	if($i)
+	$r=mysqli_fetch_row($i);
+	if($r[0])
 	{
 		$q="select * from userdetail where username='$username' AND password='$password'";
 		$i=mysqli_query($con,$q);
@@ -17,7 +18,7 @@ $con=mysqli_connect("localhost","root","") or die("can't connect");
     	{
     		session_start();
     		$_SESSION["username"]=$username;
-    		echo "<script>alert('success');window.location.href='blogger.php';</script>";
+    		echo "<script>window.location.href='blogger.php';</script>";
     	}
     	else
     	{
@@ -26,6 +27,6 @@ $con=mysqli_connect("localhost","root","") or die("can't connect");
 	}
 	else
 	{
-		echo '<script>alert("Invalid username or password");</script>';
+		echo '<script>alert("Invalid username or password");window.location.href="login.html";</script>';
 	}
 ?>

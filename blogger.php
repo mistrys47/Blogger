@@ -42,7 +42,12 @@ if(!isset($_SESSION["username"]))
 }
 
 .right {
-  width: 83%;
+  width: 65%;
+}
+.right4{
+  width:18%;
+  border-radius: 12px;
+  margin-top: 10px;
 }
 .row:after {
     content: "";
@@ -73,9 +78,9 @@ button:hover{
 </head>
 <body style="background-color: #BFC9CA;">
   <div class="row">
-	<div  class="column1 left1"style="background-color: #BFC9CA;"><center style="font-size: 50px;margin-left: 350px;">Blogger</center></div>
+	<div  class="column1 left1"style="background-color: #BFC9CA;"><center style="font-size: 50px;margin-left: 150px;">Blogger</center></div>
   <div class="column1 right1" style="background-color: #BFC9CA;padding: 20px;">
-    <button style="padding:10px;border:none;background-color: transparent;font-size: 20px;" onclick="window.location.href='logout.php'">Logout</button></div>
+    <button style="padding:10px;border:none;background-color: transparent;font-size: 20px;outline: none;" onclick="window.location.href='logout.php'">Logout</button></div>
 <div class="row">
   <div class="column left" style="background-color:#aaa;">
   	
@@ -83,11 +88,49 @@ button:hover{
     <div><button class='btn' style='margin-top: 20px;' onclick='a("profile.php")'>Your Profile</button></div>
   	<div><button class='btn' onclick='a("addblog.php")'>Add Blog</button></div>
   	<div><button class='btn' onclick='a("ob.php")'>View</button></div>
+    <div><button class="btn" onclick='a("contact.php")'>Contact Us</button></div>
   </center>
  
   </div>
   <div class="column right" style="background-color:#BFC9CA;">
   	<iframe id="main" style="width:100%;height:690px;border-radius: 10px;"src="profile.php"></iframe>
+  </div>
+  <div class="column right4" style="background-color: #404145;color: white;">
+
+    <?php
+    //notification's code
+          $con=mysqli_connect("localhost","root","") or die("can't connect");
+  if(!mysqli_select_db($con,"blog"))
+    mysqli_query($con,"CREATE DATABASE blog");
+    mysqli_select_db($con,"blog");
+    $q="select * from blog1 where username='".$_SESSION['username']."' and likes<>likes2";
+    //echo $q;
+    $i=mysqli_query($con,$q);
+    while($r=mysqli_fetch_row($i))
+    {
+      $cnt=$r[4];
+      $cnt1=$r[5];
+      $cnt=$cnt-$cnt1;
+      echo '<div style="margin-top:5px;font-size:120%;"><b style="color:#ff3232;">'.$cnt.' </b> more person liked your blog titled as <b style="color:#ff3232;">'.$r[2].'.</b></div>';
+      $q1="update blog1 set likes2=".$r[4]." where blog_id=".$r[0];
+      mysqli_query($con,$q1);
+    }
+    
+    $q="select * from blog1 where username='".$_SESSION['username']."'";
+    $i=mysqli_query($con,$q);
+    while($r=mysqli_fetch_row($i))
+    {
+      $q1="select * from comments where blog_id=".$r[0]." and seen=0";
+      $i1=mysqli_query($con,$q1);
+      while($r1=mysqli_fetch_row($i1))
+      {
+        echo '<div style="margin-top:5px;font-size:120%;"><b style="color:#00d4a5;">'.$r1[1].' </b>commented on your blog titled as <b style="color:#00d4a5;">'.$r[2].'.</b></div>';
+        $q2="update comments set seen=1 where blog_id=".$r[0]." and username='".$r1[1]."' and email='".$r1[2]."' and comment='".$r1[3]."'";
+        //echo $q2;
+        mysqli_query($con,$q2);
+      }
+    }
+    ?>
   </div>
 </div>
 </body>

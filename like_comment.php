@@ -43,7 +43,7 @@ while($r=mysqli_fetch_row($i))
 		}
 		else{
 		$blogid=$r[0];
-		$q1="insert into comments values ($blogid,'$user','$email','$comment')";
+		$q1="insert into comments(blog_id,username,email,comment) values ($blogid,'$user','$email','$comment')";
 		//echo $q1;
 		mysqli_query($con,$q1);
 		echo "<script>window.location.href='home.php';</script>";}

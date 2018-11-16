@@ -75,7 +75,7 @@ button:hover{
   <div class="row">
 	<div  class="column1 left1"style="background-color: #BFC9CA;"><center style="font-size: 50px;margin-left: 350px;">Admin</center></div>
   <div class="column1 right1" style="background-color: #BFC9CA;padding: 20px;">
-    <button style="padding:10px;border:none;background-color: transparent;font-size: 20px;" onclick="window.location.href='logout.php'">Logout</button></div>
+    <button style="padding:10px;border:none;background-color: transparent;font-size: 20px;outline: none;" onclick="window.location.href='logout.php'">Logout</button></div>
 <div class="row">
   <div class="column left" style="background-color:#aaa;">
   	
@@ -83,6 +83,7 @@ button:hover{
     <div><button class='btn' style='margin-top: 20px;' onclick='a("home1.php")'>Blogs</button></div>
   	<div><button class='btn' onclick='a("req.php")'>Requests</button></div>
   	<div><button class='btn' onclick='a("list.php")'>List of Bloggers</button></div>
+    <div><button class="btn" onclick='a("review.php")'>Reviews</button></div>
   </center>
  
   </div>
